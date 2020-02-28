@@ -50,5 +50,82 @@ function retornaDataAtualFormatada(){
         console.log(dd+"/"+mm+"/"+yyyy)
     }
 }retornaDataAtualFormatada()
+console.log("---------------------------------------------------")
 
-var hiperEspacoRegExp= new RegExp('Estelar')
+var hiperEspacoRegExp= new RegExp('Estelar');
+var textoMissao = "Apertem os cintos para adentramos ao hiper-espaço rumo a uma nova Missão Estelar JS!:)";
+console.log(hiperEspacoRegExp.test(textoMissao));
+console.log(hiperEspacoRegExp.exec(textoMissao));
+
+try {
+    for(let i = 30; i>0; i--){
+        if(i!=29){
+            console.log(i);
+        }else{
+            throw Error('Número 29');
+        }
+        
+        
+    }
+    
+} catch (error) {
+    console.log(error.name);
+    console.log(error.message);
+    console.log(error.stack);
+
+}
+
+
+
+
+var objDadosForm = new Object();
+
+function recebeDadosFormBoot(objDadosForm){
+    
+        objDadosForm.nome = document.getElementById('nomeBoot');
+        objDadosForm.email = document.getElementById('emailBoot');
+        objDadosForm.checkboxNewsletter = document.getElementById('emailPromocionalCheckBoot');
+        objDadosForm.contatoTelefone = document.getElementById('formaContatoTelefoneRadioBoot');
+        objDadosForm.contatoEmail = document.getElementById('formaContatoEmailRadioBoot');
+        objDadosForm.estadoSelect = document.getElementById('estadoSelectBoot');
+    
+    console.log("typeof objFormElementos: "+ typeof objDadosForm)
+    console.log(Object.prototype.toString.call(objDadosForm))
+    console.log('nome: ', objDadosForm.nome.value);
+    console.log('E-mail: ', objDadosForm.email.value)
+    console.log('Deseja receber newsletter: ', objDadosForm.checkboxNewsletter.checked);
+    console.log('Forma de contato por telefone: ', objDadosForm.contatoTelefone.checked);
+    console.log('Forma de contato por e-mail: ', objDadosForm.contatoEmail.checked);
+    console.log('Estado: ', objDadosForm.estadoSelect.value);
+}
+
+function preencherFormHtml(ObjDados, objDadosForm){
+    objDadosForm.nome = document.getElementById('nomeBoot').value;
+    objDadosForm.email = document.getElementById('emailBoot').value;
+    objDadosForm.checkboxNewsletter = document.getElementById('emailPromocionalCheckBoot').checked;
+    objDadosForm.contatoTelefone = document.getElementById('formaContatoTelefoneRadioBoot').checked;
+    objDadosForm.contatoEmail = document.getElementById('formaContatoEmailRadioBoot').checked;
+    objDadosForm.estadoSelect = document.getElementById('estadoSelectBoot').checked;
+    
+    var ObjDados = new Object();
+        ObjDados.nome = document.getElementById('nomeHtml').value;
+        ObjDados.email = document.getElementById('emailHtml').value;
+        ObjDados.checkboxNewsletter = document.getElementById('emailPromocionalCheckHtml').checked;
+        ObjDados.contatoTelefone = document.getElementById('formaContatoTelefoneRadioHtml').checked;
+        ObjDados.contatoEmail = document.getElementById('formaContatoEmailRadioHtml').checked;
+
+    if(ObjDados.nome != objDadosForm.nome){
+        ObjDados.nome = objDadosForm.nome
+    }
+    if(ObjDados.email != objDadosForm.email){
+        ObjDados.email != objDadosForm.email
+    }
+    if (objDadosForm.checkboxNewsletter){
+        ObjDados.checkboxNewsletter = objDadosForm.checkboxNewsletter
+    }
+    if(objDadosForm.contatoEmail){
+        ObjDados.contatoEmail = objDadosForm.contatoEmail
+    }else if(objDadosForm.contatoTelefone){
+        ObjDados.contatoTelefone = objDadosForm.contatoTelefone
+    }
+}
